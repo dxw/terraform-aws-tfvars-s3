@@ -1,19 +1,19 @@
-# <REPLACE WITH USEFUL TERRAFORM DESCRIPTION>
+# Terraform AWS Tfvars S3
 
-[![Terraform CI](./actions/workflows/continuous-integration-terraform.yml/badge.svg?branch=main)](./actions/workflows/continuous-integration-terraform.yml?branch=main)
-[![GitHub release](./releases)](./releases)
+[![Terraform CI](https://github.com/dxw/terraform-aws-tfvars-s3/actions/workflows/continuous-integration-terraform.yml/badge.svg?branch=main)](https://github.com/dxw/terraform-aws-tfvars-s3/actions/workflows/continuous-integration-terraform.yml?branch=main)
+[![GitHub release](https://github.com/dxw/terraform-aws-tfvars-s3/releases)](https://github.com/dxw/terraform-aws-tfvars-s3/releases)
 
-This <module/project> creates and manages <REPLACE WITH MAIN RESOURCE NAMES/URLS>.
+This module creates and manages an S3 bucket that will be used to upload tfvars
+to, so that they can be shared with other people developing on a Terraform
+managed project.
 
 ## Usage
 
 Example module usage:
 
 ```hcl
-module "<MODULE NAME>" {
-  source  = "github.com/<ORG>/<MODULE NAME>?ref=v<VERSION>"
-
-  environment = "dev/staging/test/pre-prod/prod/post-prod"
+module "aws_tfvars_s3" {
+  source  = "github.com/dxw/terraform-aws-tfvars-s3?ref=main"
 }
 ```
 
@@ -22,7 +22,7 @@ module "<MODULE NAME>" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.9 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.3 |
 
 ## Providers
 
@@ -34,13 +34,9 @@ No resources.
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | n/a | yes |
+No inputs.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_environment"></a> [environment](#output\_environment) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->
