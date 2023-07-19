@@ -1,0 +1,9 @@
+project_name                = "my-project"
+aws_region                  = "eu-west-2"
+enable_s3_bucket_logging    = true
+s3_logging_bucket_retention = 30
+tfvars_files = {
+  "my_terraform_vars" = {
+    path = "terraform.tfvars"
+  }
+}
