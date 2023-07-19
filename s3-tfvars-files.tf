@@ -1,4 +1,4 @@
-resource "aws_s3_bucket_object" "tfvar_file" {
+resource "aws_s3_object" "tfvar_file" {
   for_each = local.tfvars_files
 
   bucket     = aws_s3_bucket.tfvars.id
