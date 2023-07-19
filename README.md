@@ -14,6 +14,10 @@ Example module usage:
 ```hcl
 module "aws_tfvars_s3" {
   source  = "github.com/dxw/terraform-aws-tfvars-s3?ref=main"
+
+  project_name             = "my-project"
+  # enable_s3_bucket_logging = true
+  # logging_bucket_retention = true
 }
 ```
 
