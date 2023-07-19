@@ -14,3 +14,13 @@ variable "logging_bucket_retention" {
   type        = number
   default     = 30
 }
+
+variable "tfvars_files" {
+  description = "Map of objects containing tfvar file paths"
+  type = map(
+    object({
+      path = string
+      }
+  ))
+  default = {}
+}
