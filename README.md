@@ -20,6 +20,19 @@ module "aws_tfvars_s3" {
   # logging_bucket_retention = true
   # tfvars_files             = {}
 }
+
+# Rather than outputting individual attributes from the resources, this module
+# outputs the whole resource, so that all attributes can be referenced, eg:
+# `local.tfvars_s3_bucket_arn = module.aws_tfvars_s3.aws_s3_bucket_tfvars.arn`
+locals {
+  # Referencing outputs
+  local.tfvars_s3_bucket = module.aws_tfvars_s3.aws_s3_bucket_tfvars
+  local.tfvars_kms_key   = module.aws_tfvars_s3.aws_kms_key_tfvars
+  local.tfvars_kms_alias = module.aws_tfvars_s3.aws_kms_alias_tfvars
+  local.logs_s3_bucket   = module.aws_tfvars_s3.aws_s3_bucket_logs
+  local.logs_kms_key     = module.aws_tfvars_s3.aws_kms_key_logs
+  local.logs_kms_alias   = module.aws_tfvars_s3.aws_kms_alias_logs
+}
 ```
 
 <!-- BEGIN_TF_DOCS -->
@@ -70,5 +83,12 @@ module "aws_tfvars_s3" {
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_aws_kms_alias_logs"></a> [aws\_kms\_alias\_logs](#output\_aws\_kms\_alias\_logs) | n/a |
+| <a name="output_aws_kms_alias_tfvars"></a> [aws\_kms\_alias\_tfvars](#output\_aws\_kms\_alias\_tfvars) | n/a |
+| <a name="output_aws_kms_key_logs"></a> [aws\_kms\_key\_logs](#output\_aws\_kms\_key\_logs) | n/a |
+| <a name="output_aws_kms_key_tfvars"></a> [aws\_kms\_key\_tfvars](#output\_aws\_kms\_key\_tfvars) | n/a |
+| <a name="output_aws_s3_bucket_logs"></a> [aws\_s3\_bucket\_logs](#output\_aws\_s3\_bucket\_logs) | n/a |
+| <a name="output_aws_s3_bucket_tfvars"></a> [aws\_s3\_bucket\_tfvars](#output\_aws\_s3\_bucket\_tfvars) | n/a |
 <!-- END_TF_DOCS -->
