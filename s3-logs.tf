@@ -15,7 +15,7 @@ resource "aws_s3_bucket_policy" "logs" {
     {
       statement = <<EOT
       [
-      ${templatefile("${path.module}/policies/s3-bucket-policy-statements/enforce-tls.json.tpl", { bucket_arn = aws_s3_bucket.tfvars.arn })},
+      ${templatefile("${path.module}/policies/s3-bucket-policy-statements/enforce-tls.json.tpl", { bucket_arn = aws_s3_bucket.logs[0].arn })},
       ${templatefile("${path.module}/policies/s3-bucket-policy-statements/log-delivery-access.json.tpl", {
       log_bucket_arn     = aws_s3_bucket.logs[0].arn
       source_bucket_arns = jsonencode([aws_s3_bucket.tfvars.arn])
