@@ -51,22 +51,8 @@ resource "aws_s3_bucket_versioning" "logs" {
   }
 }
 
-resource "aws_kms_key" "logs" {
-  count = local.enable_logs_bucket ? 1 : 0
-
-  description             = "This key is used to encrypt bucket objects in ${aws_s3_bucket.logs[0].id}"
-  deletion_window_in_days = 10
-  enable_key_rotation     = true
-}
-
-resource "aws_kms_alias" "logs" {
-  count = local.enable_logs_bucket ? 1 : 0
-
-  name          = "alias/${local.project_name}-tfvars-logs"
-  target_key_id = aws_kms_key.logs[0].key_id
-}
-
-
+# Using SSE-KMS is not supported for logging buckets
+# tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket_server_side_encryption_configuration" "logs" {
   count = local.enable_logs_bucket ? 1 : 0
 
@@ -74,8 +60,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "logs" {
 
   rule {
     apply_server_side_encryption_by_default {
-      kms_master_key_id = aws_kms_key.logs[0].arn
-      sse_algorithm     = "aws:kms"
+      sse_algorithm = "AES256"
     }
   }
 }

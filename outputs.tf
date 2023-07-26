@@ -13,11 +13,3 @@ output "aws_kms_alias_tfvars" {
 output "aws_s3_bucket_logs" {
   value = local.enable_logs_bucket ? aws_s3_bucket.logs[0] : null
 }
-
-output "aws_kms_key_logs" {
-  value = local.enable_logs_bucket ? aws_kms_key.logs[0] : null
-}
-
-output "aws_kms_alias_logs" {
-  value = local.enable_logs_bucket ? aws_kms_alias.logs[0] : null
-}

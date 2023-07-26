@@ -53,9 +53,7 @@ locals {
 
 | Name | Type |
 |------|------|
-| [aws_kms_alias.logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
 | [aws_kms_alias.tfvars](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
-| [aws_kms_key.logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 | [aws_kms_key.tfvars](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 | [aws_s3_bucket.logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.tfvars](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
@@ -87,9 +85,7 @@ locals {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_aws_kms_alias_logs"></a> [aws\_kms\_alias\_logs](#output\_aws\_kms\_alias\_logs) | n/a |
 | <a name="output_aws_kms_alias_tfvars"></a> [aws\_kms\_alias\_tfvars](#output\_aws\_kms\_alias\_tfvars) | n/a |
-| <a name="output_aws_kms_key_logs"></a> [aws\_kms\_key\_logs](#output\_aws\_kms\_key\_logs) | n/a |
 | <a name="output_aws_kms_key_tfvars"></a> [aws\_kms\_key\_tfvars](#output\_aws\_kms\_key\_tfvars) | n/a |
 | <a name="output_aws_s3_bucket_logs"></a> [aws\_s3\_bucket\_logs](#output\_aws\_s3\_bucket\_logs) | n/a |
 | <a name="output_aws_s3_bucket_tfvars"></a> [aws\_s3\_bucket\_tfvars](#output\_aws\_s3\_bucket\_tfvars) | n/a |
