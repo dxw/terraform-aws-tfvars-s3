@@ -30,9 +30,3 @@ variable "tfvars_restrict_access_user_ids" {
   type        = list(string)
   default     = []
 }
-
-variable "logging_bucket_restrict_access" {
-  description = "Set to `true` to also apply the `tfvars_restrict_access_user_ids` list to the S3 logging bucket"
-  type        = bool
-  default     = true
-}
