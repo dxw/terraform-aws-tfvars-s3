@@ -53,9 +53,7 @@ locals {
 
 | Name | Type |
 |------|------|
-| [aws_kms_alias.logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
 | [aws_kms_alias.tfvars](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
-| [aws_kms_key.logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 | [aws_kms_key.tfvars](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
 | [aws_s3_bucket.logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.tfvars](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
@@ -77,7 +75,6 @@ locals {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_enable_s3_bucket_logging"></a> [enable\_s3\_bucket\_logging](#input\_enable\_s3\_bucket\_logging) | Enable S3 bucket logging | `bool` | `true` | no |
-| <a name="input_logging_bucket_restrict_access"></a> [logging\_bucket\_restrict\_access](#input\_logging\_bucket\_restrict\_access) | Set to `true` to also apply the `tfvars_restrict_access_user_ids` list to the S3 logging bucket | `bool` | `true` | no |
 | <a name="input_logging_bucket_retention"></a> [logging\_bucket\_retention](#input\_logging\_bucket\_retention) | Logging bucket retention in days. Set to 0 to keep all logs. | `number` | `30` | no |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Project name to be used as a prefix for all resources | `string` | n/a | yes |
 | <a name="input_tfvars_files"></a> [tfvars\_files](#input\_tfvars\_files) | Map of objects containing tfvar file paths | <pre>map(<br>    object({<br>      path = string<br>      }<br>  ))</pre> | `{}` | no |
@@ -87,9 +84,7 @@ locals {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_aws_kms_alias_logs"></a> [aws\_kms\_alias\_logs](#output\_aws\_kms\_alias\_logs) | n/a |
 | <a name="output_aws_kms_alias_tfvars"></a> [aws\_kms\_alias\_tfvars](#output\_aws\_kms\_alias\_tfvars) | n/a |
-| <a name="output_aws_kms_key_logs"></a> [aws\_kms\_key\_logs](#output\_aws\_kms\_key\_logs) | n/a |
 | <a name="output_aws_kms_key_tfvars"></a> [aws\_kms\_key\_tfvars](#output\_aws\_kms\_key\_tfvars) | n/a |
 | <a name="output_aws_s3_bucket_logs"></a> [aws\_s3\_bucket\_logs](#output\_aws\_s3\_bucket\_logs) | n/a |
 | <a name="output_aws_s3_bucket_tfvars"></a> [aws\_s3\_bucket\_tfvars](#output\_aws\_s3\_bucket\_tfvars) | n/a |
