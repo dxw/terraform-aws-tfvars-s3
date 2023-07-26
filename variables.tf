@@ -24,3 +24,15 @@ variable "tfvars_files" {
   ))
   default = {}
 }
+
+variable "tfvars_restrict_access_user_ids" {
+  description = "List of AWS User IDs that require access to the tfvars S3 bucket. If left empty, all users within the AWS account will have access"
+  type        = list(string)
+  default     = []
+}
+
+variable "logging_bucket_restrict_access" {
+  description = "Set to `true` to also apply the `tfvars_restrict_access_user_ids` list to the S3 logging bucket"
+  type        = bool
+  default     = true
+}

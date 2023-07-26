@@ -9,11 +9,17 @@ resource "aws_s3_bucket_policy" "tfvars" {
     {
       statement = <<EOT
       [
-      ${templatefile("${path.module}/policies/s3-bucket-policy-statements/enforce-tls.json.tpl", { bucket_arn = aws_s3_bucket.tfvars.arn })}
+      ${templatefile("${path.module}/policies/s3-bucket-policy-statements/enforce-tls.json.tpl", {
+      bucket_arn = aws_s3_bucket.tfvars.arn,
+      })}${length(local.tfvars_restrict_access_user_ids) != 0 ? "," : ""}
+      ${templatefile("${path.module}/policies/s3-bucket-policy-statements/restrict-access-to-list-of-users.json.tpl", {
+      bucket_arn = aws_s3_bucket.tfvars.arn,
+      user_ids   = jsonencode(local.tfvars_restrict_access_user_ids),
+})}
       ]
       EOT
-    }
-  )
+}
+)
 }
 
 resource "aws_s3_bucket_public_access_block" "tfvars" {
