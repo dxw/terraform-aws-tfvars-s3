@@ -20,10 +20,6 @@ resource "aws_s3_bucket_policy" "logs" {
       log_bucket_arn     = aws_s3_bucket.logs[0].arn
       source_bucket_arns = jsonencode([aws_s3_bucket.tfvars.arn])
       account_id         = local.aws_account_id
-      })}${length(local.tfvars_restrict_access_user_ids) != 0 ? "," : ""}
-      ${templatefile("${path.module}/policies/s3-bucket-policy-statements/restrict-access-to-list-of-users.json.tpl", {
-      bucket_arn = aws_s3_bucket.logs[0].arn,
-      user_ids   = jsonencode(local.logging_bucket_restrict_access_user_ids),
 })}
       ]
       EOT
