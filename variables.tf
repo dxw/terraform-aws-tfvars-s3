@@ -20,6 +20,7 @@ variable "tfvars_files" {
   type = map(
     object({
       path = string
+      key  = optional(string, "")
       }
   ))
   default = {}
