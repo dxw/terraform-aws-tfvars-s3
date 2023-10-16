@@ -4,5 +4,6 @@ locals {
   enable_logs_bucket              = var.enable_s3_bucket_logging
   logging_bucket_retention        = var.logging_bucket_retention
   tfvars_files                    = var.tfvars_files
+  tfvars_kms_encryption           = var.tfvars_kms_encryption
   tfvars_restrict_access_user_ids = var.tfvars_restrict_access_user_ids
 }

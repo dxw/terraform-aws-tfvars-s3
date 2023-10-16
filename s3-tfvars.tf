@@ -46,23 +46,41 @@ resource "aws_s3_bucket_logging" "tfvars" {
 }
 
 resource "aws_kms_key" "tfvars" {
+  count = local.tfvars_kms_encryption ? 1 : 0
+
   description             = "This key is used to encrypt bucket objects in ${aws_s3_bucket.tfvars.id}"
   deletion_window_in_days = 10
   enable_key_rotation     = true
 }
 
 resource "aws_kms_alias" "tfvars" {
+  count = local.tfvars_kms_encryption ? 1 : 0
+
   name          = "alias/${local.project_name}-tfvars"
-  target_key_id = aws_kms_key.tfvars.key_id
+  target_key_id = aws_kms_key.tfvars[0].key_id
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "tfvars" {
+  count = local.tfvars_kms_encryption ? 1 : 0
+
   bucket = aws_s3_bucket.tfvars.id
 
-  rule {
-    apply_server_side_encryption_by_default {
-      kms_master_key_id = aws_kms_key.tfvars.arn
-      sse_algorithm     = "aws:kms"
+  dynamic "rule" {
+    for_each = local.tfvars_kms_encryption ? [1] : []
+    content {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.tfvars.arn
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
+
+  dynamic "rule" {
+    for_each = local.tfvars_kms_encryption ? [] : [1]
+    content {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
     }
   }
 }

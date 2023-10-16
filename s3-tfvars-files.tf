@@ -4,5 +4,5 @@ resource "aws_s3_object" "tfvar_file" {
   bucket     = aws_s3_bucket.tfvars.id
   key        = each.value["key"] == "" ? each.value["path"] : each.value["key"]
   source     = each.value["path"]
-  kms_key_id = aws_kms_key.tfvars.arn
+  kms_key_id = local.tfvars_kms_encryption ? aws_kms_key.tfvars[0].arn : null
 }
