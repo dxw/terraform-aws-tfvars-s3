@@ -31,3 +31,9 @@ variable "tfvars_restrict_access_user_ids" {
   type        = list(string)
   default     = []
 }
+
+variable "tfvars_kms_encryption" {
+  description = "Use KMS rather than AES256 encryption for the tfvars bucket"
+  type        = bool
+  default     = true
+}
