@@ -69,7 +69,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tfvars" {
     for_each = local.tfvars_kms_encryption ? [1] : []
     content {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.tfvars.arn
+        kms_master_key_id = aws_kms_key.tfvars[0].arn
         sse_algorithm     = "aws:kms"
       }
     }
